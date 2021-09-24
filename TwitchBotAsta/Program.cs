@@ -10,6 +10,8 @@ namespace TwitchBotAsta
     {
         static void Main(string[] args)
         {
+            Bot bot = new Bot();
+            Console.ReadLine();
         }
     }
 }
