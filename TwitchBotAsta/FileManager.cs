@@ -5,10 +5,8 @@ namespace TwitchBotAsta
 {
     class FileManager
     {
-        private static string path = @"E:\Desktop\Temp\text.txt";
-        private string tempPath = @"E:\Desktop\Temp\temptext.txt";
-
-
+        private static string path = @"C:\Users\User\Desktop\stream\karo's bot\tasks.txt";
+        private string tempPath = @"C:\Users\User\Desktop\stream\karo's bot\temp.txt";
 
         public static string Path
         {
