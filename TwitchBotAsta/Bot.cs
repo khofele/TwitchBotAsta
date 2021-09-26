@@ -7,7 +7,7 @@ namespace TwitchBotAsta
 {
     enum Pomodoro
     {
-        ADD, EDIT, DONE, HELP
+        ADD, EDIT, FINISHED, REMOVE, HELP
     }
 
     class Bot
@@ -44,12 +44,20 @@ namespace TwitchBotAsta
                     DisplayPomodoroCommand(Pomodoro.ADD, e);
                     break;
 
-                case "tododone":
-                    DisplayPomodoroCommand(Pomodoro.DONE, e);
+                case "finishedtodo":
+                    DisplayPomodoroCommand(Pomodoro.FINISHED, e);
                     break;
 
                 case "help":
                     DisplayPomodoroCommand(Pomodoro.HELP, e);
+                    break;
+
+                case "edittodo":
+                    DisplayPomodoroCommand(Pomodoro.EDIT, e);
+                    break;
+
+                case "removetodo":
+                    DisplayPomodoroCommand(Pomodoro.REMOVE, e);
                     break;
             }
         }
@@ -118,14 +126,19 @@ namespace TwitchBotAsta
                     break;
 
                 case Pomodoro.EDIT:
+                    response = taskCommandManager.EditTaskCommand(e);
                     break;
 
-                case Pomodoro.DONE:
+                case Pomodoro.FINISHED:
                     response = taskCommandManager.TaskDoneCommand(e);
                     break;
 
                 case Pomodoro.HELP:
                     response = taskCommandManager.HelpCommand();
+                    break;
+
+                case Pomodoro.REMOVE:
+                    response = taskCommandManager.RemoveTaskCommand(e);
                     break;
             }
             return response;

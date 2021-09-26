@@ -12,22 +12,28 @@ namespace TwitchBotAsta
         public static Dictionary<Pomodoro, DateTime> globalCooldownsPomos = new Dictionary<Pomodoro, DateTime>()
         {
             { Pomodoro.ADD, DateTime.Now },
-            { Pomodoro.DONE, DateTime.Now },
-            { Pomodoro.HELP, DateTime.Now }
+            { Pomodoro.FINISHED, DateTime.Now },
+            { Pomodoro.EDIT, DateTime.Now },
+            { Pomodoro.HELP, DateTime.Now },
+            { Pomodoro.REMOVE, DateTime.Now }
         };
 
         public static Dictionary<Pomodoro, int> globalCooldownLengthsPomos = new Dictionary<Pomodoro, int>()
         {
             { Pomodoro.ADD, 30 },
-            { Pomodoro.DONE, 30 },
-            { Pomodoro.HELP, 30 }
+            { Pomodoro.FINISHED, 30 },
+            { Pomodoro.EDIT, 30 },
+            { Pomodoro.HELP, 30 },
+            { Pomodoro.REMOVE, 30 }
         };
 
         public static Dictionary<Pomodoro, bool> globalCooldownsRunningPomos = new Dictionary<Pomodoro, bool>()
         {
             { Pomodoro.ADD, false },
-            { Pomodoro.ADD, false },
-            { Pomodoro.HELP, false }
+            { Pomodoro.FINISHED, false },
+            { Pomodoro.EDIT, false },
+            { Pomodoro.HELP, false },
+            { Pomodoro.REMOVE, false }
         };
 
         public static bool CheckCooldownOffPomodoro(Pomodoro pomo)

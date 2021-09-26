@@ -54,6 +54,36 @@ namespace TwitchBotAsta
             return "break it down, identify your first step and let's start with that!";
         }
 
+        public string RemoveTaskCommand(OnChatCommandReceivedArgs e)
+        {
+            if (fileManager.FindTask(User.GetUser(e)) != null)
+            {
+                string canceledTask = fileManager.FindTask(User.GetUser(e));
+                RemoveTask(User.GetUser(e));
+                fileManager.DeleteTaskInFile(User.GetUser(e));
+                return User.GetUser(e) + " removed " + canceledTask + " from the list!";
+            }
+            else
+            {
+                return User.GetUser(e) + " you have to add a todo to remove a todo!";
+            }
+        }
+
+        public string EditTaskCommand(OnChatCommandReceivedArgs e)
+        {
+            string chatMessage = e.Command.ChatMessage.Message.ToString();
+            string editMessage = chatMessage.Replace("!edittask", " -");
+            CheckAndEditTask(User.GetUser(e), editMessage, e);
+            if (fileManager.FindTask(User.GetUser(e)) != null)
+            {
+                return User.GetUser(e) + " edited their todo: " + editMessage.Replace(" -", "") + "!";
+            }
+            else
+            {
+                return User.GetUser(e) + " you have to add a todo to edit a todo!";
+            }
+        }
+
         private void AddTask(Task task)
         {
             tasks.Add(task);
@@ -68,6 +98,11 @@ namespace TwitchBotAsta
                     tasks.Remove(tasks[i]);
                 }
             }
+        }
+
+        private void CheckAndEditTask(string user, string editMessage, OnChatCommandReceivedArgs e)
+        {
+            fileManager.FindAndEditTask(user, editMessage);
         }
 
         private void CheckTaskUser(string user)
