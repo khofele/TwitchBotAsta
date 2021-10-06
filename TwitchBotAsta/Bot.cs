@@ -12,9 +12,9 @@ namespace TwitchBotAsta
 
     class Bot
     {
-        private ConnectionCredentials creds = new ConnectionCredentials("astas_assistant", "oauth:a9znkcoafd7ql6eehud40jsvvqm1p2");
+        private ConnectionCredentials creds = new ConnectionCredentials("astas_assistant", "oauth:xn2ck8d88xgw1xoydlj7cwo293e3h2");
         private TwitchClient client;
-        private string channel = "Asta_Francesca";
+        private string channel = "asta_francesca";
         private string response;
         private TaskCommandManager taskCommandManager = new TaskCommandManager();
 
@@ -67,7 +67,7 @@ namespace TwitchBotAsta
             if (CheckModerator(e) == true || CheckBroadcaster(e) == true)
             {
                 GetResponsePomodoro(pomo, e);
-                if(response != null)
+                if (response != null)
                 {
                     SendChatMessage(response);
                     return;
@@ -78,7 +78,7 @@ namespace TwitchBotAsta
                 GetResponsePomodoro(pomo, e);
                 Cooldown.globalCooldownsPomos[pomo] = DateTime.Now;
                 Cooldown.globalCooldownsRunningPomos[pomo] = true;
-                if(response != null)
+                if (response != null)
                 {
                     SendChatMessage(response);
                     return;

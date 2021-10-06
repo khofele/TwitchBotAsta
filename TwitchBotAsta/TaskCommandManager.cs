@@ -72,7 +72,7 @@ namespace TwitchBotAsta
         public string EditTaskCommand(OnChatCommandReceivedArgs e)
         {
             string chatMessage = e.Command.ChatMessage.Message.ToString();
-            string editMessage = chatMessage.Replace("!edittask", " -");
+            string editMessage = chatMessage.Replace("!edittodo", " -");
             CheckAndEditTask(User.GetUser(e), editMessage, e);
             if (fileManager.FindTask(User.GetUser(e)) != null)
             {
@@ -151,7 +151,7 @@ namespace TwitchBotAsta
             {
                 fileManager.WriteToFile(User.GetUser(e) + task.UserTask);
                 AddTask(task);
-                return "It's on the list so you cant back out now.." + User.GetUser(e) + "lets get started! <3";
+                return "It's on the list so you cant back out now.. " + User.GetUser(e) + " lets get started! <3";
             }
             else
             {
