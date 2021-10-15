@@ -12,7 +12,7 @@ namespace TwitchBotAsta
 
     class Bot
     {
-        private ConnectionCredentials creds = new ConnectionCredentials("astas_assistant", "oauth:xn2ck8d88xgw1xoydlj7cwo293e3h2");
+        private ConnectionCredentials creds = new ConnectionCredentials("astas_assistant", "oauth:ceafd7gpt2eoibbodfx5k85minnoss");
         private TwitchClient client;
         private string channel = "asta_francesca";
         private string response;
